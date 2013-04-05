@@ -56,8 +56,9 @@ public class AltWarn extends JavaPlugin implements Listener {
 		PreparedStatement s;
 		Vector<String> otherAccounts = new Vector<String>();
 		try {
-			s = this._mysql.prepareStatement( "SELECT * FROM `alt_ips` WHERE `ip`=?;" );
+			s = this._mysql.prepareStatement( "SELECT * FROM `alt_ips` WHERE `ip`=? AND `name`!=?;" );
 			s.setLong(1, ip);
+			s.setString(2, player.getName());
 			ResultSet rs = s.executeQuery();
 			while(rs.next()) {
 				otherAccounts.add(rs.getString("name"));
@@ -113,6 +114,7 @@ public class AltWarn extends JavaPlugin implements Listener {
 		}
 		
 		if(otherAccounts.size()>0) {
+			System.out.println("[AltWarn] names for "+player.getName()+": "+otherAccounts);
 			this.getServer().getScheduler().scheduleSyncDelayedTask( this, new notifyPlayer(player.getName()), 20L * 2 );
 			Player[] everyone = getServer().getOnlinePlayers();
 			String shareStr = "";
