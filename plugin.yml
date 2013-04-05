@@ -1,0 +1,4 @@
+name: AltWarn
+main: me.dpedu.altwarn.AltWarn
+version: 1.0
+commands:
