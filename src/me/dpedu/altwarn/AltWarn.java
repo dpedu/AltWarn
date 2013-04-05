@@ -145,6 +145,7 @@ public class AltWarn extends JavaPlugin implements Listener {
 			getServer().getPlayer(name).sendMessage(ChatColor.RED	 +"If you've already made a post, this message");
 			getServer().getPlayer(name).sendMessage(ChatColor.RED	 +"can be ignored.");
 			getServer().getPlayer(name).sendMessage(ChatColor.YELLOW + "" + ChatColor.MAGIC + "#######################################");
+			System.out.println("[AltWarn] Warned "+this.name);
 		}
 		
 	}
